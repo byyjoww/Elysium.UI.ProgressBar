@@ -1,6 +1,7 @@
 ﻿using Elysium.Utils;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Elysium.UI.ProgressBar
 {
@@ -19,7 +20,7 @@ namespace Elysium.UI.ProgressBar
         public float Max => MaxFill.Value;
 
 
-        public event Action OnFillValueChanged;
+        public event UnityAction OnFillValueChanged;
 
         public void TriggerOnFillValueChanged()
         {
