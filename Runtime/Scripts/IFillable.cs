@@ -7,7 +7,7 @@ namespace Elysium.UI.ProgressBar
     {
         float Current { get; }
         float Max { get; }
-        event Action OnFillValueChanged;
+        event UnityAction OnFillValueChanged;
         void TriggerOnFillValueChanged();
     }
 }
