@@ -8,7 +8,7 @@ namespace Elysium.UI.ProgressBar
     public class ProgressBarFillableRefValue : ProgressBarValue
     {
         [RequireInterface(typeof(IFillable))]
-        [SerializeField] private Object fillable;
+        [SerializeReference] private UnityEngine.Object fillable = default;
 
         public IFillable Fillable => fillable as IFillable;
 

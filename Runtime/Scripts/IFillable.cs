@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Elysium.UI.ProgressBar
 {
@@ -7,7 +8,7 @@ namespace Elysium.UI.ProgressBar
     {
         float Current { get; }
         float Max { get; }
-        event Action OnFillValueChanged;
-        void TriggerOnFillValueChanged();
+
+        event UnityAction OnFillValueChanged;
     }
 }

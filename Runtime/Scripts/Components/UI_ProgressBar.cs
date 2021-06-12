@@ -6,6 +6,8 @@ namespace Elysium.UI.ProgressBar
 {
     public class UI_ProgressBar : MonoBehaviour
     {
+        [SerializeField] protected bool disableOnEmpty = false;
+
         [Header("Value")]
         [SerializeField] protected ProgressBarValue Value;
 
@@ -22,13 +24,27 @@ namespace Elysium.UI.ProgressBar
 
         public void BindCustomValue(Func<float> _getCurrent, Func<float> _getMax, ref Action _onChanged)
         {
-            var data = new ProgressBarData(_getCurrent, _getMax);
-            if (Value != null) { Destroy(Value); }
-            Value = gameObject.AddComponent<ProgressBarFillableValue>();
+            if (Value == null)
+            {
+                Value = gameObject.AddComponent<ProgressBarFillableValue>();
+            }
+
+            if (Value.GetType() != typeof(ProgressBarFillableValue))
+            {
+                Destroy(Value);
+                Value = gameObject.AddComponent<ProgressBarFillableValue>();
+            }
+
+            var data = new ProgressBarData(_getCurrent, _getMax);            
             (Value as ProgressBarFillableValue).SetRuntimeData(data);
             _onChanged += () => data.TriggerOnFillValueChanged();
             Value.OnChanged += UpdateValue;
             UpdateValue();
+        }
+
+        public void SetActive(bool _active)
+        {
+            gameObject.SetActive(_active);
         }
 
         public virtual float Fill
@@ -62,11 +78,16 @@ namespace Elysium.UI.ProgressBar
             if (flatValueTextComponent != null) { flatValueTextComponent.text = barFlatValueText; }
             if (fillImageComponent != null) { fillImageComponent.fillAmount = barFill; }
             if (colorImageComponent != null) { colorImageComponent.color = barColor; }
+
+            if (Fill == 0) { SetActive(!disableOnEmpty); }
+            else if(Fill == -1) { SetActive(!disableOnEmpty); }
+            else { SetActive(true); }
         }
 
         private void OnValidate()
         {
             if (Value == null) { Value = gameObject.AddComponent<ProgressBarFillableValue>(); }
+            colorImageComponent.color = gradient.Evaluate(1);
         }
     }
 }
