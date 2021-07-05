@@ -10,6 +10,5 @@ namespace Elysium.UI.ProgressBar
         float Max { get; }
 
         event UnityAction OnFillValueChanged;
-        void TriggerOnFillValueChanged();
     }
 }
