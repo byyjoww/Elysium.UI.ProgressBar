@@ -1,4 +1,5 @@
-﻿using Elysium.Utils;
+﻿using Elysium.Core;
+using Elysium.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.Events;

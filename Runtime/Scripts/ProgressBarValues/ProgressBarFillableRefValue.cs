@@ -1,4 +1,5 @@
-﻿using Elysium.Utils.Attributes;
+﻿using Elysium.Core;
+using Elysium.Utils.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

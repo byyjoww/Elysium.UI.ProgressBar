@@ -1,3 +1,4 @@
+using Elysium.Core;
 using UnityEngine;
 
 namespace Elysium.UI.ProgressBar

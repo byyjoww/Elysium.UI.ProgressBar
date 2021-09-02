@@ -13,6 +13,11 @@
       "displayName": "Demo",
       "description": "Small demo scripts showing how to use the package.",
       "path": "Samples/Demo"
+    },
+	{
+      "displayName": "Resource",
+      "description": "Package resources, such as prefabs and art assets.",
+      "path": "Samples/Resource"
     }
   ]
 }
